@@ -1,4 +1,4 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik } from 'formik';
 import { FiSearch } from 'react-icons/fi';
 import { Seachbar, Searchform, Input, Btn } from './Searchbar.styled';
 
