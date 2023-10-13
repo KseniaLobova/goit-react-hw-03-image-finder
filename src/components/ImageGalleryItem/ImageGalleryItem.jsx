@@ -4,6 +4,9 @@ import { Component } from 'react';
 import { ModalWrap } from 'components/Modal/Modal';
 
 const customStyles = {
+  overlay: {
+    backgroundColor: '#4D4948',
+  },
   content: {
     top: '50%',
     left: '50%',
@@ -11,6 +14,7 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    backgroundColor: '#ABA6A5',
   },
 };
 Modal.setAppElement('#root');
