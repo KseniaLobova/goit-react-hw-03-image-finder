@@ -14,6 +14,7 @@ export class App extends Component {
     loader: false,
     query: '',
     error: false,
+    totalPage: 0,
   };
 
   onchangeInput = inValue => {
@@ -38,6 +39,8 @@ export class App extends Component {
         this.setState({ loader: true });
 
         const images = await fetchImages(page, query);
+        const totalPage = Math.floor(images.totalHits / 12);
+        this.setState({ totalPage: totalPage });
         const imagesGallery = images.hits;
         console.log(imagesGallery);
 
@@ -61,12 +64,14 @@ export class App extends Component {
   }
 
   render() {
-    const { gallery } = this.state;
+    const { gallery, totalPage, page } = this.state;
     return (
       <div>
         <Searchbar onChange={this.onchangeInput} />
         {gallery.length > 0 && <ImageGallery images={gallery} />}
-        {gallery.length > 0 && <Button loadMore={this.handleLoadMore} />}
+        {gallery.length > 0 && page < totalPage && (
+          <Button loadMore={this.handleLoadMore} />
+        )}
         {this.state.loader === true && <Loader />}
         {this.state.error === true && <Toaster />}
       </div>
